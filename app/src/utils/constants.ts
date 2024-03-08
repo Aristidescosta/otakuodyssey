@@ -1,4 +1,5 @@
 export const TRANSPARENT_COLOR_SECUNDARY = '#1a202ce3'
+export const TRANSPARENT_WHITE_COLOR_SECUNDARY = '#ffffff91'
 export const HEADER_HEIGHT = '3.8rem'
 export const Z_FIXED_100 = '100'
 

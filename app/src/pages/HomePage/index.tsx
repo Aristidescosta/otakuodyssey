@@ -1,8 +1,11 @@
-import { Header } from '@/src/components'
-import React from 'react'
+import { Header } from "@/src/components";
+import { FeaturedScreen } from "./components/FeaturedScreen";
 
 export const HomePage = () => {
-  return (
-    <Header />
-  )
-}
+	return (
+		<>
+			<Header />
+			<FeaturedScreen />
+		</>
+	);
+};
