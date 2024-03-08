@@ -1,0 +1,70 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"useDefineForClassFields": true,
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ESNext"
+		],
+		"allowJs": false,
+		"skipLibCheck": true,
+		"esModuleInterop": false,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"allowImportingTsExtensions": true,
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"paths": {
+			"@/*": [
+				"./app/*"
+			],
+			"@styles/*": [
+				"./app/src/styles/*"
+			],
+			"@components/*": [
+				"./app/src/components/*"
+			],
+			"@pages/*": [
+				"./app/src/pages/*"
+			],
+			"@hooks/*": [
+				"./app/src/hooks/*"
+			],
+			"@database/*": [
+				"./app/src/database/*"
+			],
+			"@types/*": [
+				"./app/src/types/*"
+			],
+			"@routes/*": [
+				"./app/src/routes/*"
+			],
+			"@repositories/*": [
+				"./app/src/repositories/*"
+			],
+			"@utils/*": [
+				"./app/src/utils/*"
+			],
+			"@store/*": [
+				"./app/src/stores/*"
+			],
+			"@services/*": [
+				"./app/src/services/*"
+			]
+		}
+	},
+	"include": [
+		"app"
+	],
+	"references": [
+		{
+			"path": "./tsconfig.node.json"
+		}
+	],
+}
