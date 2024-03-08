@@ -1,2 +1,4 @@
-export * from "@components/InputSearchWithOpion.ts"
+export * from "@components/Header/components/MobileViewHeader"
+export * from "@components/InputSearchWithOpion"
+export * from "@components/OdysseyItemCard"
 export * from "@components/Header"
