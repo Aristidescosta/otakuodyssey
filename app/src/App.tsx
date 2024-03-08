@@ -5,9 +5,8 @@ import RoutesConfig from "./routes/RoutesConfig";
 
 export default function App() {
 	return (
-		<ChakraBaseProvider theme={OdysseyTheme}>
+		<ChakraBaseProvider theme={OdysseyTheme} >
 			<RoutesConfig />
 		</ChakraBaseProvider>
 	);
 }
-
