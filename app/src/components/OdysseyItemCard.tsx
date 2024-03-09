@@ -2,7 +2,11 @@ import { Flex, IconButton, Image, Text, Tooltip } from "@chakra-ui/react";
 import { OdysseyIcon } from "@/react-icons";
 import React from "react";
 
-export const OdysseyItemCard: React.FC = () => {
+interface IOdysseyItemCardProps{
+	onOpen: () => void
+}
+
+export const OdysseyItemCard: React.FC<IOdysseyItemCardProps> = ({ onOpen }) => {
 	return (
 		<Flex
 			pos={"relative"}
@@ -20,6 +24,7 @@ export const OdysseyItemCard: React.FC = () => {
 			boxShadow={"2xl"}
 			mb={10}
 			p={1}
+			onClick={onOpen}
 		>
 			<Image src={"/fat4e.jpg"} objectFit={"cover"} h={"70%"} w={"full"} />
 			<Flex w={"full"} fontWeight={"bold"}>

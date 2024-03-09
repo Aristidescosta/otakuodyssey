@@ -3,6 +3,9 @@ export const TRANSPARENT_WHITE_COLOR_SECUNDARY = '#ffffff91'
 export const HEADER_HEIGHT = '3.8rem'
 export const Z_FIXED_100 = '100'
 
+export const APP_COLOR = '#101018'
+export const APP_VARIANT_COLOR = '#3ba4b1'
+
 export const BIGGEST_FONT_SIZE = '2.5rem'
 export const H1_FONT_SIZE = '1.75rem'
 export const H2_FONT_SIZE = '1.25rem'

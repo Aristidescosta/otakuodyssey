@@ -1,4 +1,6 @@
 export * from "@components/Header/components/MobileViewHeader"
 export * from "@components/InputSearchWithOpion"
+export * from "@components/EmptyMessage"
 export * from "@components/OdysseyItemCard"
+export * from "@components/OdysseyModal"
 export * from "@components/Header"

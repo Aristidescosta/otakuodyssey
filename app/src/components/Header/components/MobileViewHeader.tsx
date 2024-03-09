@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { InputSearchWithOpion } from "../../InputSearchWithOpion";
+import { APP_COLOR } from "@/src/utils/constants";
 
 interface IMobileViewHeaderProps {
 	colorMode: ColorMode;
@@ -51,19 +52,13 @@ export const MobileViewHeader: React.FC<IMobileViewHeaderProps> = ({
 							variant={"ghost"}
 							onClick={toggleColorMode}
 							icon={
-								colorMode === "light" ? (
-									<OdysseyIcon
-										package="materialdesignicons"
-										name="MdDarkMode"
-										color="#e2e8f0"
-									/>
-								) : (
-									<OdysseyIcon
-										package="materialdesignicons"
-										name="MdOutlineLightMode"
-										color="#ffffff29"
-									/>
-								)
+								<OdysseyIcon
+									package="materialdesignicons"
+									name={
+										colorMode === "light" ? "MdDarkMode" : "MdOutlineLightMode"
+									}
+									color={colorMode === "light" ? APP_COLOR : "#e2e8f0"}
+								/>
 							}
 						/>
 						<Button size="md" variant="outline">
@@ -81,7 +76,7 @@ export const MobileViewHeader: React.FC<IMobileViewHeaderProps> = ({
 					<OdysseyIcon
 						package="ionicons5"
 						name="IoReorderThree"
-						color={colorMode === "light" ? "#e2e8f0" : "#ffffff29"}
+						color={colorMode === "light" ? APP_COLOR : "#e2e8f0"}
 						size={24}
 					/>
 				}

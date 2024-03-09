@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import {
+	APP_COLOR,
 	FIRST_COLOR,
 	FONT_SEMI_BOLD,
 	H2_FONT_SIZE,
@@ -86,19 +87,13 @@ export const Header: React.FC = () => {
 							variant={"ghost"}
 							onClick={toggleColorMode}
 							icon={
-								colorMode === "light" ? (
-									<OdysseyIcon
-										package="materialdesignicons"
-										name="MdDarkMode"
-										color="#e2e8f0"
-									/>
-								) : (
-									<OdysseyIcon
-										package="materialdesignicons"
-										name="MdOutlineLightMode"
-										color="#ffffff29"
-									/>
-								)
+								<OdysseyIcon
+									package="materialdesignicons"
+									name={
+										colorMode === "light" ? "MdDarkMode" : "MdOutlineLightMode"
+									}
+									color={colorMode === "light" ? APP_COLOR : "#e2e8f0"}
+								/>
 							}
 						/>
 						<Button size="md" variant="outline" px={6}>
