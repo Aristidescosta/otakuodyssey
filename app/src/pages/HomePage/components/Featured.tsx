@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { OdysseyIcon } from "@/react-icons";
 import {
 	TRANSPARENT_COLOR_SECUNDARY,
@@ -13,12 +14,22 @@ import {
 	Tooltip,
 	useColorMode,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { ItemDataType } from "@/src/types/ItemDataType";
 
-export const FeaturedScreen: React.FC = () => {
+interface IFeaturedProps {
+	item: ItemDataType | null;
+}
+
+export const Featured: React.FC<IFeaturedProps> = ({ item }) => {
+	const genres: string | string[] = [];
+	if (item) {
+		for (const i in item.genres) {
+			genres.push(item.genres[i].name);
+		}
+	}
+
 	const { colorMode } = useColorMode();
 	const [color, setColor] = useState(TRANSPARENT_COLOR_SECUNDARY);
-
 	useEffect(() => {
 		setColor(
 			colorMode === "light"
@@ -31,7 +42,11 @@ export const FeaturedScreen: React.FC = () => {
 			as="section"
 			bgPos={"center"}
 			bgSize={"cover"}
-			bgImg={"/fat4e.jpg"}
+			bgImg={
+				item?.images.webp
+					? item?.images.jpg.large_image_url
+					: item?.images.jpg.large_image_url
+			}
 			h={"80vh"}
 			w={"full"}
 			alignSelf={"flex-start"}
@@ -63,7 +78,7 @@ export const FeaturedScreen: React.FC = () => {
 						justifyContent={"center"}
 					>
 						<Heading as={"h1"} fontSize={30}>
-							Fate / Stay Night: Unlimited Blade Works
+							{item?.title}
 						</Heading>
 						<Flex
 							fontSize={14}
@@ -73,9 +88,11 @@ export const FeaturedScreen: React.FC = () => {
 							flexWrap={"wrap"}
 						>
 							<Text>ANIME</Text>
-							<Text>- Estreia 2014</Text>
-							<Text>Géneros: ACÇÃO</Text>
-							<Text> Estado: Finalizado</Text>
+							<Text>- Estreia {item?.aired.prop.from.year}</Text>
+							<Text>
+								Géneros: {genres.join(", ").toLocaleUpperCase()}
+							</Text>
+							<Text> Estado: {item?.status}</Text>
 						</Flex>
 
 						<Flex gap={4} flexDir={"column"}>
@@ -104,28 +121,9 @@ export const FeaturedScreen: React.FC = () => {
 									/>
 								</Tooltip>
 							</Flex>
-							<Text mt={15} fontSize={14}>
-								Esta é a adaptação da segunda rota da novela visual popular:
-								Fate / stay night. Nessa rota, Rin Toosaka será a principal
-								personagem feminina. Revelações sobre Shirou e seu destino serão
-								feitas.
+							<Text fontSize={14} noOfLines={5}>
+								{item?.synopsis}
 							</Text>
-						</Flex>
-						<Flex
-							alignItems={"center"}
-							color={"#999"}
-							alignSelf={"flex-end"}
-							fontSize={60}
-							pos={"absolute"}
-							bottom={20}
-							right={2}
-						>
-							<Flex fontSize={16}>
-								<Text>01</Text>
-								<Text alignSelf={"flex-end"} mt={-25} fontSize={16}>
-									/04
-								</Text>
-							</Flex>
 						</Flex>
 					</Flex>
 				</Box>

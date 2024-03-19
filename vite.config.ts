@@ -18,6 +18,7 @@ export default defineConfig({
 			"@repositories": path.resolve("app/src/repositories"),
 			"@utils": path.resolve("app/src/utils"),
 			"@store": path.resolve("app/src/store"),
+			"@environment": path.resolve("app/src/environment"),
 		},
 	},
 	plugins: [react()],

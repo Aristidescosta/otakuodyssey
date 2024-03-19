@@ -17,3 +17,41 @@ export const FONT_REGULAR = '300'
 export const FONT_MEDIUM = '400'
 export const FONT_SEMI_BOLD = '500'
 export const FIRST_COLOR = '#24d0e7'
+
+
+export const ITENS: {
+	imagePath: string,
+	title: string,
+	description: string,
+	type: string,
+	year: number,
+	status: string,
+	genres: string[]
+}[] = [
+		{
+			imagePath: "/fat4e.jpg",
+			title: "Fate / Stay Night: Unlimited Blade Works",
+			description: `Esta é a adaptação da segunda rota da novela
+		visual popular: Fate / stay night. Nessa rota,
+		Rin Toosaka será a principal personagem
+		feminina. Revelações sobre Shirou e seu destino
+		serão feitas.`,
+			type: "anime",
+			year: 2014,
+			status: "Finalizado",
+			genres: ["Acção"]
+		},
+		{
+			imagePath: "/boku.jpg",
+			title: "Fate / Stay Night: Unlimited Blade Works",
+			description: `Esta é a adaptação da segunda rota da novela
+		visual popular: Fate / stay night. Nessa rota,
+		Rin Toosaka será a principal personagem
+		feminina. Revelações sobre Shirou e seu destino
+		serão feitas.`,
+			type: "anime",
+			year: 2014,
+			status: "Finalizado",
+			genres: ["Acção"]
+		}
+	]
