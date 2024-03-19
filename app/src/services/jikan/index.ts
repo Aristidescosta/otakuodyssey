@@ -36,7 +36,23 @@ export const getRandomItem = async (
 	}
 }
 
+export const getRecentItemRecommendations = async (slug = "anime") => {
+	try {
+		const relativeUrl = `seasons/now`
+		const { data } = await Api.get(relativeUrl)
+		if (data) {
+			return data
+		}
+		return new Error("Erro ao listar os animes")
+	} catch (error) {
+		return new Error(
+			(error as { message: string }).message || "Erro ao listar os animes"
+		);
+	}
+}
+
 export const AnimeService = {
 	getAnimeList,
-	getRandomItem
+	getRandomItem,
+	getRecentItemRecommendations
 }

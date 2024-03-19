@@ -57,7 +57,18 @@ export const HomePage = () => {
 				.finally(() => setLoadingItens(false));
 		};
 
+		const getItemRecommendations = () => {
+			AnimeService.getRecentItemRecommendations()
+				.then((response) => {
+					console.log(response);
+				})
+				.catch((error) => {
+					console.log(error.message);
+				});
+		};
+
 		getAllAnimes();
+		getItemRecommendations()
 	}, []);
 
 	return (
@@ -124,7 +135,7 @@ export const HomePage = () => {
 							<OdysseyItemCard onOpen={onOpen} />
 						</SwiperSlide>
 					</Swiper>
-					{/* <EmptyMessage message="Tivemos um pequeno erro interno, por favor recarrege a página!" /> */}
+					<EmptyMessage message="Tivemos um pequeno erro interno, por favor recarrege a página!" />
 					<Flex
 						w={"full"}
 						bgColor={APP_COLOR}
