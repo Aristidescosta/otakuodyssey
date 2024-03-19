@@ -35,7 +35,7 @@ export const OdysseyModal: React.FC<IOdysseyModalProps> = ({
 				<DrawerBody bgColor={"blue.900"} p={0}>
 					<Box display={"flex"} h={"full"} w={"full"} flexDir={"column"}>
 						<Box
-							bgImage={"/fat4e.jpg"}
+							bgImage={"/boku.jpg"}
 							bgRepeat={"no-repeat"}
 							bgSize={"cover"}
 							bgPos={"center"}
@@ -110,6 +110,7 @@ export const OdysseyModal: React.FC<IOdysseyModalProps> = ({
 									<Button
 										aria-label={`Continuar lendo sobre fate`}
 										bgColor={APP_COLOR}
+										_hover={{ opacity: .7 }}
 										size={"md"}
 									>
 										Continue lendo

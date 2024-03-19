@@ -25,8 +25,9 @@ export const OdysseyItemCard: React.FC<IOdysseyItemCardProps> = ({ onOpen }) => 
 			mb={10}
 			p={1}
 			onClick={onOpen}
+			borderRadius={8}
 		>
-			<Image src={"/fat4e.jpg"} objectFit={"cover"} h={"70%"} w={"full"} />
+			<Image src={"/boku.jpg"} objectFit={"cover"} h={"70%"} w={"full"} borderTopRadius={8}/>
 			<Flex w={"full"} fontWeight={"bold"}>
 				<Text textOverflow={"ellipsis"} w={"full"}>
 					Fate / Stay Night: Unlimited Blade Works

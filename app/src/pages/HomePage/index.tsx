@@ -1,4 +1,9 @@
-import { EmptyMessage, Header, OdysseyItemCard, OdysseyModal } from "@/src/components";
+import {
+	EmptyMessage,
+	Header,
+	OdysseyItemCard,
+	OdysseyModal,
+} from "@/src/components";
 
 import { FeaturedScreen } from "./components/FeaturedScreen";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -30,7 +35,7 @@ import { Link } from "react-router-dom";
 import { OdysseyIcon } from "@/react-icons";
 
 export const HomePage = () => {
-	const { isOpen, onOpen, onClose } = useDisclosure()
+	const { isOpen, onOpen, onClose } = useDisclosure();
 	return (
 		<>
 			<Header />
@@ -53,11 +58,11 @@ export const HomePage = () => {
 				scrollbar={{ draggable: true }}
 				effect="card"
 				spaceBetween={50}
-				slidesPerView={1.5}
+				slidesPerView={1.4}
 				style={{ padding: 30 }}
 			>
 				<SwiperSlide style={{ overflow: "visible" }}>
-					<OdysseyItemCard onOpen={onOpen}/>
+					<OdysseyItemCard onOpen={onOpen} />
 				</SwiperSlide>
 			</Swiper>
 			<Heading as={"h2"} mb={8}>
@@ -70,11 +75,11 @@ export const HomePage = () => {
 				scrollbar={{ draggable: true }}
 				effect="card"
 				spaceBetween={50}
-				slidesPerView={1.5}
+				slidesPerView={1.4}
 				style={{ padding: 30 }}
 			>
 				<SwiperSlide style={{ overflow: "visible" }}>
-					<OdysseyItemCard onOpen={onOpen}/>
+					<OdysseyItemCard onOpen={onOpen} />
 				</SwiperSlide>
 			</Swiper>
 			{/* <EmptyMessage message="Tivemos um pequeno erro interno, por favor recarrege a página!" /> */}
@@ -245,7 +250,7 @@ export const HomePage = () => {
 					</Flex>
 				</Flex>
 			</Flex>
-			<OdysseyModal isOpen={isOpen}  onClose={onClose}/>
+			<OdysseyModal isOpen={isOpen} onClose={onClose} />
 		</>
 	);
 };

@@ -31,7 +31,7 @@ export const FeaturedScreen: React.FC = () => {
 			as="section"
 			bgPos={"center"}
 			bgSize={"cover"}
-			bgImg={"/boku.jpg"}
+			bgImg={"/fat4e.jpg"}
 			h={"80vh"}
 			w={"full"}
 			alignSelf={"flex-start"}
@@ -104,7 +104,7 @@ export const FeaturedScreen: React.FC = () => {
 									/>
 								</Tooltip>
 							</Flex>
-							<Text mt={15} fontSize={10}>
+							<Text mt={15} fontSize={14}>
 								Esta é a adaptação da segunda rota da novela visual popular:
 								Fate / stay night. Nessa rota, Rin Toosaka será a principal
 								personagem feminina. Revelações sobre Shirou e seu destino serão
