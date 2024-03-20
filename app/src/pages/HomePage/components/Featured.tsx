@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { AnimeTrailer } from "@/src/components";
 import { OdysseyIcon } from "@/react-icons";
-import {
-	TRANSPARENT_COLOR_SECUNDARY,
-	TRANSPARENT_WHITE_COLOR_SECUNDARY,
-} from "@/src/utils/constants";
+import { ItemDataType } from "@/src/types";
 import {
 	Box,
 	Button,
@@ -15,9 +12,12 @@ import {
 	useColorMode,
 	useDisclosure,
 } from "@chakra-ui/react";
-import { ItemDataType } from "@/src/types/ItemDataType";
-import { AnimeTrailer } from "@/src/components/AnimeTrailer";
+import {
+	TRANSPARENT_COLOR_SECUNDARY,
+	TRANSPARENT_WHITE_COLOR_SECUNDARY,
+} from "@/src/utils";
 
+import React, { useEffect, useState } from "react";
 interface IFeaturedProps {
 	item: ItemDataType | null;
 }

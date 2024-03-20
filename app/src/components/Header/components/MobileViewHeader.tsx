@@ -1,4 +1,5 @@
 import { OdysseyIcon } from "@/react-icons";
+import { APP_COLOR } from "@/src/utils";
 import {
 	Button,
 	ColorMode,
@@ -12,10 +13,10 @@ import {
 	Flex,
 	IconButton,
 } from "@chakra-ui/react";
-import React from "react";
-import { InputSearchWithOpion } from "../../InputSearchWithOpion";
-import { APP_COLOR } from "@/src/utils/constants";
 
+import React from "react";
+
+import { InputSearchWithOpion } from "../../InputSearchWithOpion";
 interface IMobileViewHeaderProps {
 	colorMode: ColorMode;
 	isOpen: boolean;
@@ -55,9 +56,15 @@ export const MobileViewHeader: React.FC<IMobileViewHeaderProps> = ({
 								<OdysseyIcon
 									package="materialdesignicons"
 									name={
-										colorMode === "light" ? "MdDarkMode" : "MdOutlineLightMode"
+										colorMode === "light"
+											? "MdDarkMode"
+											: "MdOutlineLightMode"
 									}
-									color={colorMode === "light" ? APP_COLOR : "#e2e8f0"}
+									color={
+										colorMode === "light"
+											? APP_COLOR
+											: "#e2e8f0"
+									}
 								/>
 							}
 						/>

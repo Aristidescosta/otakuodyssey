@@ -1,6 +1,8 @@
 import { Flex, IconButton, Image, Text, Tooltip } from "@chakra-ui/react";
 import { OdysseyIcon } from "@/react-icons";
+
 import React from "react";
+
 import { ItemDataType } from "../types/ItemDataType";
 
 interface IOdysseyItemCardProps {

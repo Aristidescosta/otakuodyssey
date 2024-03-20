@@ -6,7 +6,9 @@ import {
 	InputLeftElement,
 	Select,
 } from "@chakra-ui/react";
+
 import React from "react";
+
 import { FIRST_COLOR } from "../utils/constants";
 
 export const InputSearchWithOpion: React.FC = () => {

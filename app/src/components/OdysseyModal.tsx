@@ -1,3 +1,4 @@
+import { OdysseyIcon } from "@/react-icons";
 import {
 	Box,
 	Button,
@@ -15,16 +16,17 @@ import {
 	Tooltip,
 	useDisclosure,
 } from "@chakra-ui/react";
+
 import React from "react";
-import { APP_COLOR } from "../utils/constants";
-import { OdysseyIcon } from "@/react-icons";
+
 import { ItemDataType } from "../types/ItemDataType";
+import { APP_COLOR } from "../utils/constants";
 import { AnimeTrailer } from "./AnimeTrailer";
 
 interface IOdysseyModalProps {
-	isOpen: boolean;
 	onClose: () => void;
 	item: ItemDataType;
+	isOpen: boolean;
 }
 
 export const OdysseyModal: React.FC<IOdysseyModalProps> = ({

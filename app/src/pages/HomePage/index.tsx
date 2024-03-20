@@ -1,15 +1,24 @@
+import { AnimeService, IItemListType, useToastMessage } from "@/src/services";
+import { APP_VARIANT_COLOR, getAnimeList } from "@/src/utils";
+import { ItemDataType } from "@/src/types";
 import {
 	EmptyMessage,
+	Footer,
 	Header,
 	OdysseyItemCard,
 	OdysseyModal,
 } from "@/src/components";
+import {
+	Box,
+	Center,
+	CircularProgress,
+	Heading,
+	Image,
+	useDisclosure,
+} from "@chakra-ui/react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import { useEffect, useState } from "react";
 import {
 	Scrollbar,
 	A11y,
@@ -17,22 +26,14 @@ import {
 	Navigation,
 	Pagination,
 } from "swiper/modules";
-import "swiper/css";
-import {
-	Center,
-	CircularProgress,
-	Heading,
-	Image,
-	useDisclosure,
-} from "@chakra-ui/react";
-import { APP_VARIANT_COLOR } from "@/src/utils/constants";
-import { useEffect, useState } from "react";
-import { AnimeService, IItemListType } from "@/src/services/jikan";
-import { ItemDataType } from "@/src/types/ItemDataType";
+
 import { Featured } from "./components/Featured";
-import { Footer } from "@/src/components/Footer";
-import { getAnimeList } from "@/src/utils/hepers";
-import { useToastMessage } from "@/src/services/chakra-ui-api/toast";
+
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css";
 
 export const HomePage = () => {
 	const { ToastStatus, toastMessage } = useToastMessage();
@@ -91,11 +92,11 @@ export const HomePage = () => {
 				</Center>
 			) : (
 				<>
-					<Featured item={currentItem} />
+					{currentItem && <Featured item={currentItem} />}
 
 					{loadingItemList ? (
 						<>
-							<Featured item={currentItem} />
+							{/* <Featured item={currentItem} /> */}
 							<Center>
 								<Image
 									src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
@@ -107,8 +108,8 @@ export const HomePage = () => {
 							</Center>
 						</>
 					) : itemList.length > 0 ? (
-						itemList.map((item) => (
-							<>
+						itemList.map((item, index) => (
+							<Box key={index}>
 								<Heading as={"h2"} mb={8}>
 									{item.title}
 								</Heading>
@@ -139,14 +140,20 @@ export const HomePage = () => {
 										</SwiperSlide>
 									))}
 								</Swiper>
-							</>
+							</Box>
 						))
 					) : (
 						<EmptyMessage message="Tivemos um pequeno erro interno, por favor recarrege a página!" />
 					)}
 				</>
 			)}
-			{itemPreview && <OdysseyModal isOpen={isOpen} item={itemPreview} onClose={onClose} />}
+			{itemPreview && (
+				<OdysseyModal
+					isOpen={isOpen}
+					item={itemPreview}
+					onClose={onClose}
+				/>
+			)}
 			<Footer />
 		</>
 	);

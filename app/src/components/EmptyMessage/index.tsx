@@ -11,6 +11,7 @@ export const EmptyMessage: React.FC <IEmptyMessageProps> = ({ message }) => {
 			alignItems={'center'}
 			justifyContent={'center'}
 			height={'60vh'}
+			p={2}
 		>
 			<Text
 				fontSize={'2xl'}

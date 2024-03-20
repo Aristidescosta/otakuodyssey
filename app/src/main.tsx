@@ -6,15 +6,16 @@ import App from "./App.tsx";
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 
 if (window.location.hostname === "localhost") {
-  root.render(
-    <>
-      <App />
-    </>
-  );
+	root.render(
+		<>
+			<App />
+		</>
+	);
 } else {
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
+	root.render(
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>
+	);
 }
+

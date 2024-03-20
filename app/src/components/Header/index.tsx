@@ -1,3 +1,12 @@
+import { OdysseyIcon } from "@/react-icons";
+import {
+	APP_COLOR,
+	FIRST_COLOR,
+	FONT_SEMI_BOLD,
+	H2_FONT_SIZE,
+	HEADER_HEIGHT,
+	Z_FIXED_100,
+} from "@/src/utils/constants";
 import {
 	Box,
 	Button,
@@ -13,17 +22,10 @@ import {
 	useDisclosure,
 	useMediaQuery,
 } from "@chakra-ui/react";
+
 import { Link } from "react-router-dom";
-import {
-	APP_COLOR,
-	FIRST_COLOR,
-	FONT_SEMI_BOLD,
-	H2_FONT_SIZE,
-	HEADER_HEIGHT,
-	Z_FIXED_100,
-} from "@/src/utils/constants";
 import React from "react";
-import { OdysseyIcon } from "@/react-icons";
+
 import { MobileViewHeader } from "./components/MobileViewHeader";
 
 export const Header: React.FC = () => {
@@ -44,7 +46,11 @@ export const Header: React.FC = () => {
 			boxShadow={"2xl"}
 			as={"header"}
 		>
-			<Flex w={"95vw"} justifyContent={"space-between"} alignItems={"center"}>
+			<Flex
+				w={"95vw"}
+				justifyContent={"space-between"}
+				alignItems={"center"}
+			>
 				<Flex as={Link} to={"/"}>
 					<Text
 						as={"h1"}
@@ -90,9 +96,15 @@ export const Header: React.FC = () => {
 								<OdysseyIcon
 									package="materialdesignicons"
 									name={
-										colorMode === "light" ? "MdDarkMode" : "MdOutlineLightMode"
+										colorMode === "light"
+											? "MdDarkMode"
+											: "MdOutlineLightMode"
 									}
-									color={colorMode === "light" ? APP_COLOR : "#e2e8f0"}
+									color={
+										colorMode === "light"
+											? APP_COLOR
+											: "#e2e8f0"
+									}
 								/>
 							}
 						/>

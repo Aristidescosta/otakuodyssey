@@ -1,4 +1,5 @@
 import { useToast, ToastPosition } from '@chakra-ui/react'
+
 enum ToastStatus {
 	SUCCESS = 'success',
 	ERROR = 'error',
