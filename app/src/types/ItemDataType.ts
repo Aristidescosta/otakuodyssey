@@ -1,5 +1,4 @@
 export type ItemDataType = {
-	imagePath: string,
 	title: string,
 	synopsis: string,
 	type: string,
@@ -11,10 +10,7 @@ export type ItemDataType = {
 		type: string;
 		url: string;
 	}[]
-	images: {
-		jpg: ImageType
-		webp: ImageType
-	}
+	images: ImageType;
 	trailer: {
 		embed_url: string;
 		url: string;
@@ -30,10 +26,15 @@ export type ItemDataType = {
 	}
 }
 
-type ImageType = {
+type ImagesUrlType = {
 	image_url: string;
 	large_image_url: string;
 	small_image_url: string;
+}
+
+export type ImageType = {
+	jpg: ImagesUrlType
+	webp: ImagesUrlType
 }
 
 type AiredType = {
