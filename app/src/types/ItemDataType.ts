@@ -4,12 +4,9 @@ export type ItemDataType = {
 	type: string,
 	year: number,
 	status: string,
-	genres: {
-		mal_id: number;
-		name: string;
-		type: string;
-		url: string;
-	}[]
+	genres: Generic[],
+	producers: Generic[],
+	studios: Generic[],
 	images: ImageType;
 	trailer: {
 		embed_url: string;
@@ -24,6 +21,18 @@ export type ItemDataType = {
 		string: string;
 		from: string;
 	}
+	episodes: number;
+	popularity: number;
+	score: number;
+	rank: number;
+	source: string
+}
+
+type Generic = {
+	mal_id: number;
+	name: string;
+	type: string;
+	url: string;
 }
 
 type ImagesUrlType = {
