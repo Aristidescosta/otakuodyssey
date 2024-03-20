@@ -1,12 +1,17 @@
 import { Flex, IconButton, Image, Text, Tooltip } from "@chakra-ui/react";
 import { OdysseyIcon } from "@/react-icons";
 import React from "react";
+import { ItemDataType } from "../types/ItemDataType";
 
-interface IOdysseyItemCardProps{
-	onOpen: () => void
+interface IOdysseyItemCardProps {
+	onOpen: () => void;
+	item: ItemDataType;
 }
 
-export const OdysseyItemCard: React.FC<IOdysseyItemCardProps> = ({ onOpen }) => {
+export const OdysseyItemCard: React.FC<IOdysseyItemCardProps> = ({
+	onOpen,
+	item,
+}) => {
 	return (
 		<Flex
 			pos={"relative"}
@@ -27,10 +32,16 @@ export const OdysseyItemCard: React.FC<IOdysseyItemCardProps> = ({ onOpen }) => 
 			onClick={onOpen}
 			borderRadius={8}
 		>
-			<Image src={"/boku.jpg"} objectFit={"cover"} h={"70%"} w={"full"} borderTopRadius={8}/>
+			<Image
+				src={item.images.jpg.large_image_url}
+				objectFit={"cover"}
+				h={"70%"}
+				w={"full"}
+				borderTopRadius={8}
+			/>
 			<Flex w={"full"} fontWeight={"bold"}>
-				<Text textOverflow={"ellipsis"} w={"full"}>
-					Fate / Stay Night: Unlimited Blade Works
+				<Text noOfLines={3} w={"full"}>
+					{item.title}
 				</Text>
 			</Flex>
 			<Flex pos={"absolute"} bottom={4} right={2} gap={2}>

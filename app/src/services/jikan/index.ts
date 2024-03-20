@@ -1,11 +1,11 @@
-import { Environment } from "@/src/environment"
-import { Api } from "../axios-config"
 import { ItemDataType } from "@/src/types/ItemDataType"
-import { RecommendationType } from "@/src/types/RecommendationType"
+import { Environment } from "@/src/environment"
+
+import { Api } from "../axios-config"
 
 export type IItemListType = {
 	title: string;
-	data: ItemDataType[] | RecommendationType[];
+	data: ItemDataType[];
 }
 
 export const getAnimeList = async (
@@ -17,7 +17,7 @@ export const getAnimeList = async (
 		if (data) {
 			return {
 				title: '',
-				data: slug.includes('recommendations') ? data.data as RecommendationType[] : data.data as ItemDataType[]
+				data: data.data as ItemDataType[]
 			}
 		}
 		return new Error("Erro ao listar os animes")

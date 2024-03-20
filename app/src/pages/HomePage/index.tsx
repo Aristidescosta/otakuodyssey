@@ -19,39 +19,43 @@ import {
 } from "swiper/modules";
 import "swiper/css";
 import {
-	Box,
 	Center,
 	CircularProgress,
-	Divider,
-	Flex,
 	Heading,
-	IconButton,
-	Text,
+	Image,
 	useDisclosure,
 } from "@chakra-ui/react";
-import { APP_COLOR, APP_VARIANT_COLOR } from "@/src/utils/constants";
-import { Link } from "react-router-dom";
-import { OdysseyIcon } from "@/react-icons";
+import { APP_VARIANT_COLOR } from "@/src/utils/constants";
 import { useEffect, useState } from "react";
-import { AnimeService } from "@/src/services/jikan";
+import { AnimeService, IItemListType } from "@/src/services/jikan";
 import { ItemDataType } from "@/src/types/ItemDataType";
 import { Featured } from "./components/Featured";
 import { Footer } from "@/src/components/Footer";
 import { getAnimeList } from "@/src/utils/hepers";
+import { useToastMessage } from "@/src/services/chakra-ui-api/toast";
 
 export const HomePage = () => {
+	const { ToastStatus, toastMessage } = useToastMessage();
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const [loadingItens, setLoadingItens] = useState(false);
+
 	const [currentItem, setCurrentItem] = useState<ItemDataType | null>(null);
+	const [itemList, setItemList] = useState<IItemListType[]>([]);
+	const [loadingItemList, setLoadingItemList] = useState(false);
+	const [loadingItens, setLoadingItens] = useState(false);
 
 	useEffect(() => {
 		setLoadingItens(true);
+		setLoadingItemList(true);
 		const getAllAnimes = () => {
 			AnimeService.getRandomItem()
 				.then((response) => {
 					if (response instanceof Error) {
+						toastMessage({
+							title: response.message,
+							statusToast: ToastStatus.ERROR,
+							position: "top-right",
+						});
 						console.log(response);
-						
 					} else {
 						setCurrentItem(response);
 					}
@@ -60,10 +64,12 @@ export const HomePage = () => {
 		};
 
 		getAllAnimes();
-		getAnimeList().then((animeList) => {
-			console.log(animeList)
-		})
-			.catch((error) => console.error(error.message));
+		getAnimeList()
+			.then((animeList) => {
+				setItemList(animeList);
+			})
+			.catch((error) => console.error(error.message))
+			.finally(() => setLoadingItemList(false));
 	}, []);
 
 	return (
@@ -81,60 +87,62 @@ export const HomePage = () => {
 			) : (
 				<>
 					<Featured item={currentItem} />
-					<Heading as={"h2"} mb={8}>
-						Novas temporadas
-					</Heading>
-					<Swiper
-						modules={[
-							Navigation,
-							Pagination,
-							Scrollbar,
-							A11y,
-							EffectCards,
-						]}
-						navigation
-						pagination={{ clickable: true }}
-						scrollbar={{ draggable: true }}
-						effect="card"
-						spaceBetween={50}
-						slidesPerView={1.4}
-						style={{ padding: 30 }}
-					>
-						<SwiperSlide style={{ overflow: "visible" }}>
-							<OdysseyItemCard onOpen={onOpen} />
-						</SwiperSlide>
-						<SwiperSlide style={{ overflow: "visible" }}>
-							<OdysseyItemCard onOpen={onOpen} />
-						</SwiperSlide>
-					</Swiper>
-					<Heading as={"h2"} mb={8}>
-						Em alta
-					</Heading>
-					<Swiper
-						modules={[
-							Navigation,
-							Pagination,
-							Scrollbar,
-							A11y,
-							EffectCards,
-						]}
-						navigation
-						pagination={{ clickable: true }}
-						scrollbar={{ draggable: true }}
-						effect="card"
-						spaceBetween={50}
-						slidesPerView={1.4}
-						style={{ padding: 30 }}
-					>
-						<SwiperSlide style={{ overflow: "visible" }}>
-							<OdysseyItemCard onOpen={onOpen} />
-						</SwiperSlide>
-					</Swiper>
-					<EmptyMessage message="Tivemos um pequeno erro interno, por favor recarrege a página!" />
-					<Footer />
-					<OdysseyModal isOpen={isOpen} onClose={onClose} />
+
+					{loadingItemList ? (
+						<>
+							<Featured item={currentItem} />
+							<Center>
+								<Image
+									src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
+									w={140}
+									h={140}
+									mt={-12}
+									zIndex={9999}
+								/>
+							</Center>
+						</>
+					) : itemList.length > 0 ? (
+						itemList.map((item) => (
+							<>
+								<Heading as={"h2"} mb={8}>
+									{item.title}
+								</Heading>
+								<Swiper
+									modules={[
+										Navigation,
+										Pagination,
+										Scrollbar,
+										A11y,
+										EffectCards,
+									]}
+									navigation
+									pagination={{ clickable: true }}
+									scrollbar={{ draggable: true }}
+									effect="card"
+									spaceBetween={50}
+									slidesPerView={1.4}
+									style={{ padding: 30 }}
+								>
+									{item.data.map((itemSlide) => (
+										<SwiperSlide
+											style={{ overflow: "visible" }}
+										>
+											<OdysseyItemCard
+												onOpen={onOpen}
+												item={itemSlide}
+											/>
+										</SwiperSlide>
+									))}
+								</Swiper>
+							</>
+						))
+					) : (
+						<EmptyMessage message="Tivemos um pequeno erro interno, por favor recarrege a página!" />
+					)}
 				</>
 			)}
+			<OdysseyModal isOpen={isOpen} onClose={onClose} />
+			<Footer />
 		</>
 	);
 };

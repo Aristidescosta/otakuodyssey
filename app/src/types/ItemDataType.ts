@@ -1,5 +1,4 @@
 export type ItemDataType = {
-	imagePath: string,
 	title: string,
 	synopsis: string,
 	type: string,
