@@ -23,7 +23,12 @@ export const AnimeTrailer: React.FC<IAnimeTrailerProps> = ({
 	url,
 }) => {
 	return (
-		<Modal onClose={onCloseTrailer} isOpen={isOpen} size={"3xl"}>
+		<Modal
+			onClose={onCloseTrailer}
+			isOpen={isOpen}
+			size={"3xl"}
+			closeOnOverlayClick={false}
+		>
 			<ModalOverlay
 				bg="none"
 				backdropFilter="auto"

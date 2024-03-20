@@ -4,7 +4,7 @@ import React from "react";
 import { ItemDataType } from "../types/ItemDataType";
 
 interface IOdysseyItemCardProps {
-	onOpen: () => void;
+	onOpen: (item: ItemDataType) => void;
 	item: ItemDataType;
 }
 
@@ -29,7 +29,7 @@ export const OdysseyItemCard: React.FC<IOdysseyItemCardProps> = ({
 			boxShadow={"2xl"}
 			mb={10}
 			p={1}
-			onClick={onOpen}
+			onClick={() => onOpen(item)}
 			borderRadius={8}
 		>
 			<Image

@@ -42,6 +42,12 @@ export const HomePage = () => {
 	const [itemList, setItemList] = useState<IItemListType[]>([]);
 	const [loadingItemList, setLoadingItemList] = useState(false);
 	const [loadingItens, setLoadingItens] = useState(false);
+	const [itemPreview, setItemPreview] = useState<ItemDataType | null>(null);
+
+	const handleOpenDescribeModal = (item: ItemDataType) => {
+		setItemPreview(item);
+		onOpen();
+	};
 
 	useEffect(() => {
 		setLoadingItens(true);
@@ -55,7 +61,6 @@ export const HomePage = () => {
 							statusToast: ToastStatus.ERROR,
 							position: "top-right",
 						});
-						console.log(response);
 					} else {
 						setCurrentItem(response);
 					}
@@ -128,7 +133,7 @@ export const HomePage = () => {
 											style={{ overflow: "visible" }}
 										>
 											<OdysseyItemCard
-												onOpen={onOpen}
+												onOpen={handleOpenDescribeModal}
 												item={itemSlide}
 											/>
 										</SwiperSlide>
@@ -141,7 +146,7 @@ export const HomePage = () => {
 					)}
 				</>
 			)}
-			<OdysseyModal isOpen={isOpen} onClose={onClose} />
+			{itemPreview && <OdysseyModal isOpen={isOpen} item={itemPreview} onClose={onClose} />}
 			<Footer />
 		</>
 	);
