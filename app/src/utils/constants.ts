@@ -55,3 +55,18 @@ export const ITENS: {
 			genres: ["Acção"]
 		}
 	]
+
+export const DATA_REQUEST: { title: string, slug: string }[] = [
+	{
+		title: "Novas temporadas",
+		slug: "seasons/now"
+	},
+	{
+		title: "Em alta",
+		slug: "top/anime"
+	},
+	{
+		title: "Recomendações",
+		slug: "recommendations/anime"
+	}
+]

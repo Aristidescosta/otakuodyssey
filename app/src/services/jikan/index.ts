@@ -1,15 +1,24 @@
 import { Environment } from "@/src/environment"
 import { Api } from "../axios-config"
 import { ItemDataType } from "@/src/types/ItemDataType"
+import { RecommendationType } from "@/src/types/RecommendationType"
+
+export type IItemListType = {
+	title: string;
+	data: ItemDataType[] | RecommendationType[];
+}
 
 export const getAnimeList = async (
 	slug = "top/anime"
-): Promise<any | Error> => {
+): Promise<IItemListType | Error> => {
 	try {
 		const relativeUrl = `${slug}?limit=${Environment.LIMITE_DE_DADOS}`
 		const { data } = await Api.get(relativeUrl)
 		if (data) {
-			return data
+			return {
+				title: '',
+				data: slug.includes('recommendations') ? data.data as RecommendationType[] : data.data as ItemDataType[]
+			}
 		}
 		return new Error("Erro ao listar os animes")
 	} catch (error) {
@@ -36,7 +45,7 @@ export const getRandomItem = async (
 	}
 }
 
-export const getRecentItemRecommendations = async (slug = "anime") => {
+export const getRecentItemRecommendations = async () => {
 	try {
 		const relativeUrl = `seasons/now`
 		const { data } = await Api.get(relativeUrl)
